@@ -1,0 +1,20 @@
+{
+  "name": "async-streaming",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@tsconfig/node23": "23.0.1",
+    "tsx": "4.19.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.13.0",
+    "eslint": "^9.26.0"
+  }
+}
