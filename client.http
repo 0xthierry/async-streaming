@@ -1,0 +1,64 @@
+### Create a new job
+# This will create a new job and return its ID
+POST http://localhost:3000/job
+Content-Type: application/json
+
+{
+  "data": {
+    "message": "Process this data",
+    "priority": "high",
+    "timestamp": "{{$timestamp}}"
+  }
+}
+
+### Get a specific job by ID
+# Replace the ID below with an actual job ID from the response above
+GET http://localhost:3000/job/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+### Stream job processing events via SSE (Server-Sent Events)
+# Replace the ID below with an actual job ID from the response above
+# This now uses Redis Streams for reliable event delivery
+GET http://localhost:3000/job/836849b8-19e8-4616-8f7b-265effa4b97f/stream
+Accept: text/event-stream
+
+### Create a job with array data
+POST http://localhost:3000/job
+Content-Type: application/json
+
+{
+  "data": {
+    "items": [1, 2, 3, 4, 5],
+    "operation": "process-array"
+  }
+}
+
+### Create a complex job
+POST http://localhost:3000/job
+Content-Type: application/json
+
+{
+  "data": {
+    "user": {
+      "id": 12345,
+      "name": "Test User"
+    },
+    "task": {
+      "type": "image-processing",
+      "settings": {
+        "format": "jpg",
+        "dimensions": {
+          "width": 800,
+          "height": 600
+        }
+      }
+    }
+  }
+}
+
+### How to use this file:
+# 1. Create a job using one of the POST requests
+# 2. Copy the job ID from the response
+# 3. Replace the placeholder ID with the actual ID in the GET and STREAM requests
+# 4. Run the GET request to see the job status
+# 5. Run the STREAM request to see real-time updates
